@@ -48,6 +48,13 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
     sslog_node_t *node;
     sslog_init();
+    int message_count;
+    
+    char** list = ss_discovery_sib(NULL, 10010, &message_count);
+
+    for(int i = 0; i< sizeof(list); i++){
+       printf("%s\n", list[i]);
+    }
 
     node = sslog_new_node("KP_Player", "X", "78.46.130.194", 10010);
 
