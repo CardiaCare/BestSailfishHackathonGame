@@ -38,13 +38,6 @@ extern "C"{
 #include "ontology/ontology.h"
 }
 
-typedef struct kp_data_s {
-    int port;
-    char address[KP_PARAM_MAX_LEN + 1];
-} kp_data_t;
-static void print_kp_data(kp_data_t *data);
-static void init_kp_data(int argc, char **argv, kp_data_t *data);
-
 int main(int argc, char *argv[])
 {
 
@@ -60,64 +53,25 @@ int main(int argc, char *argv[])
     sslog_init();
 
     register_ontology();
-    
-    init_kp_data(argc, argv, &kp_data);
-    
-    print_kp_data(&kp_data);
-
-    char *address = (kp_data.address[0] == '\0') ? NULL : kp_data.address;
 
     // Initialize smart space information.
-    ss_info_t **infos = ss_discovery(address, kp_data.port);
+    ss_info_t **infos = ss_discovery(address, 10010);
+   
+    if (infos == NULL) {
+        printf("No SIBs around KP :(.\n");
+        return 0;
+    }
+   
+   int infos_index = 0;
+   ss_info_t *info = infos[infos_index];
+   
+   while (info != NULL)
+   {
+       qDebug() << "SS Info for " << info->space_id << " Address: " << info->address.ip << " Port: " << info->address.port ;
+
+    }
 
     //QQmlEngine engine;
     //engine.addImportPath("qrc:///");
     return SailfishApp::main(argc, argv);
-}
-
-/******************************************************************************/
-/***************************** Static functions *******************************/
-/**
- * @brief Initializes KP data using parameters or default values.
- * 
- * @param[in] argc Number of parameters
- * @param[in] argv parameter's array.
- * @param[in] data kp data to initialize.
- */
-static void init_kp_data(int argc, char **argv, kp_data_t *data)
-{
-    if (data == NULL) {
-        return;
-    }
-
-    // Set default values.
-    data->port = -1;
-    data->address[0] = '\0';
-
-    if (argc < 2 || argv == NULL) {
-        return;
-    }
-
-    // Start checking parameters after program name.
-    for (int i = 1; i + 1 < argc; i += 2) {
-        if (argv[i] == NULL) {
-            continue;
-        }
-
-        if (strncmp(KP_PARAM_SS_ADDRESS, argv[i], KP_PARAM_MAX_LEN) == 0) {
-            snprintf(data->address, KP_PARAM_MAX_LEN, "%s", argv[i + 1]);
-        } else if (strncmp(KP_PARAM_SS_PORT, argv[i], KP_PARAM_MAX_LEN) == 0) {
-            data->port = (int) strtol(argv[i + 1], NULL, 10);
-        }
-    }
-}
-/** @brief Prints information about KP. */
-static void print_kp_data(kp_data_t *data)
-{
-
-    if (data == NULL) {
-        return;
-    }
-
-    qDebug() << "Adderess: " << data->address << " Port: " << data->port;
 }
