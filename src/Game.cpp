@@ -33,9 +33,9 @@
 #endif
 
 #include <sailfishapp.h>
+extern "C" {
 #include "ontology/ontology.h"
-
-
+}
 int main(int argc, char *argv[])
 {
     // SailfishApp::main() will display "qml/template.qml", if you need more
@@ -52,11 +52,11 @@ int main(int argc, char *argv[])
     
     char** list = ss_discovery_sib(NULL, 10010, &message_count);
 
-    for(int i = 0; i< sizeof(list); i++){
-       printf("%s\n", list[i]);
+    for(int i = 0; i< message_count; i++){
+      qDebug() << list[i];
     }
 
-    node = sslog_new_node("KP_Player", "X", "78.46.130.194", 10010);
+    //node = sslog_new_node("KP_Player", "X", "78.46.130.194", 10010);
 
     register_ontology();
     
