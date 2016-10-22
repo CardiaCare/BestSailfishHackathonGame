@@ -51,39 +51,36 @@ int main(int argc, char *argv[])
     //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
     //
     // To display the view, call "show()" (will show fullscreen on device).
+
     sslog_node_t *node;
+
+    node = sslog_new_node("PlayerKP", "X", "127.0.0.1", 10010);
+    sslog_node_join(node);
+
     sslog_init();
 
     register_ontology();
 
-    foreach (const QHostAddress &address, QNetworkInterface::allAddresses()) {
-        if (address.protocol() == QAbstractSocket::IPv4Protocol && address != QHostAddress(QHostAddress::LocalHost)){
+    sslog_individual_t *player = sslog_new_individual(CLASS_GAMER);
 
-            QString myIp =  address.toString();
-            QByteArray ar = myIp.toLocal8Bit();
-            char *addr = ar.data();
-            qDebug() << addr;
-            // Initialize smart space information.
-            ss_info_t **infos = ss_discovery(addr, 10010);
-            qDebug() << "1";
-            if (infos == NULL) {
-                qDebug() << "No SIBs around KP :(";
-            } else {
-                qDebug() << "2";
-                int infos_index = 0;
-                qDebug() << "3";
-                ss_info_t *info = infos[infos_index];
-                qDebug() << "4";
-                while (info != NULL)
-                {
-                    qDebug() << "SS Info for " << info->space_id << " Address: " << info->address.ip << " Port: " << info->address.port ;
-                    ++infos_index;
-                    info = infos[infos_index];
-                }
-            }
+    sslog_node_insert_individual(node, player);
 
-        }
-    }
+    sslog_subscription_t *virus_subscription = sslog_new_subscription(node, true);
+    sslog_sbcr_add_class(virus_subscription, CLASS_VIRUS);
+
+    sslog_subsction_t *particles_subscription = sslog_new_subscription(node, true);
+    sslog_sbcr_add_class(particles_subscription, CLASS_PARTICLE);
+
+
+
+
+    /*
+     * Publish Player
+     * Publish its viruses
+     * When particle sent Publish Particle and its charge
+     * When particle reach destination Update property Score
+     * Subscribe to particles and viruses (SIGNAL)
+     */
 
 
 
