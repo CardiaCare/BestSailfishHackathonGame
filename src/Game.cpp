@@ -33,6 +33,7 @@
 #endif
 
 #include <sailfishapp.h>
+
 extern "C"{
 #include "ontology/ontology.h"
 }
@@ -43,13 +44,10 @@ typedef struct kp_data_s {
 } kp_data_t;
 static void print_kp_data(kp_data_t *data);
 static void init_kp_data(int argc, char **argv, kp_data_t *data);
-/**
- * @brief Contains data of the KP.
- */
-
 
 int main(int argc, char *argv[])
 {
+
     // SailfishApp::main() will display "qml/template.qml", if you need more
     // control over initialization, you can use:
     //
@@ -60,7 +58,6 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
     sslog_node_t *node;
     sslog_init();
-    // node = sslog_new_node("KP_Player", "X", "78.46.130.194", 10010);
 
     register_ontology();
     
