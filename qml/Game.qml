@@ -38,6 +38,7 @@ ApplicationWindow
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: Orientation.All
     _defaultPageOrientations: Orientation.All
+    onWindowChanged: window.flags += Qt.WindowOverrideSystemGestures
 }
 
 

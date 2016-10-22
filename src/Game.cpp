@@ -38,6 +38,7 @@
 
 int main(int argc, char *argv[])
 {
+
     // SailfishApp::main() will display "qml/template.qml", if you need more
     // control over initialization, you can use:
     //
