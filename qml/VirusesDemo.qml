@@ -109,6 +109,12 @@ Item {
                 var winner = entityManager.checkWinner()
                 if (winner){
                     console.log("true");
+
+                    var dialog = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),
+                                                {"name": "Winner"})
+                    dialog.accepted.connect(function() {
+
+                    })
                 }else{
                     console.log("false");
                 }
