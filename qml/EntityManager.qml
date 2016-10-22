@@ -7,6 +7,7 @@ QtObject {
 
     function generate(PosX,PosY,Player,Score) {
         idinsib +=1
+        console.log("idinsib " + idinsib)
            var component = Qt.createComponent("Entity.qml")
            entities.push(component.createObject(scene, {"idinsib":idinsib,"x": PosX, "y": PosY, "z": 0, "player": Player, "score": Score}));
            //entities.push(component.createObject(scene, {"x": PosX, "y": 250, "z": 0, "player": 2, "score": 2}));
