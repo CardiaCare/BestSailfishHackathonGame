@@ -45,12 +45,12 @@ Canvas {
         anchors.fill: parent
         z: controllerPosition
         onPressed: {
-            console.log("onPressed")
+            //console.log("onPressed")
             var startPosition = Qt.point(mouseX, mouseY)
             hooked(startPosition)
         }
         onReleased: {
-            console.log("onReleased")
+            //console.log("onReleased")
             var endPosition = Qt.point(mouseX, mouseY)
             if (status > 0) {
                 pointed(endPosition)

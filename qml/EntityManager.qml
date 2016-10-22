@@ -32,9 +32,6 @@ QtObject {
     }
 
 
-
-
-
     function collision(position){
         var flag = 0
         entities.forEach(function(entity){
@@ -105,11 +102,13 @@ QtObject {
 
     function checkWinner(){
         var firstPlayer = entities[0];
-        entities.forEach(function(entity){
-            if (entity.player !== firstPlayer.player) {
-               return false;
+        for(var i = 1; i < entities.length; i++){
+            if (entities[i].player !== firstPlayer.player) {
+               console.log("entity.player "+entities[i].player)
+               console.log("firstPlayer.player "+firstPlayer.player)
+               return false
             }
-        })
-        return true;
+        }
+        return true
     }
 }
