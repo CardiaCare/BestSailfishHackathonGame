@@ -33,7 +33,7 @@
 #endif
 
 #include <sailfishapp.h>
-
+#include "ontology/ontology.h"
 
 
 int main(int argc, char *argv[])
@@ -47,6 +47,22 @@ int main(int argc, char *argv[])
     //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
     //
     // To display the view, call "show()" (will show fullscreen on device).
+    sslog_node_t *node;
+    sslog_init();
+    int message_count;
+    
+    char** list = ss_discovery_sib(NULL, 10010, &message_count);
+
+    for(int i = 0; i< sizeof(list); i++){
+       printf("%s\n", list[i]);
+    }
+
+    node = sslog_new_node("KP_Player", "X", "78.46.130.194", 10010);
+
+    register_ontology();
+    
+    
+
     //QQmlEngine engine;
     //engine.addImportPath("qrc:///");
     return SailfishApp::main(argc, argv);
