@@ -34,7 +34,9 @@ import "pages"
 
 ApplicationWindow
 {
+
     id: applicationWindow
+
     initialPage: Component { FirstPage { } }
 
 
