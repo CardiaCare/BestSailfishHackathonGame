@@ -9,9 +9,6 @@ QtObject {
         idinsib +=1
            var component = Qt.createComponent("Entity.qml")
            entities.push(component.createObject(scene, {"idinsib":idinsib,"x": PosX, "y": PosY, "z": 0, "player": Player, "score": Score}));
-           //entities.push(component.createObject(scene, {"x": PosX, "y": 250, "z": 0, "player": 2, "score": 2}));
-           //entities.push(component.createObject(scene, {"x": PosX, "y": 180, "z": 0, "player": 1, "score": 14}));
-           //entities.push(component.createObject(scene, {"x": 400, "y": 400, "z": 0, "player": 2, "score": 5}));
        }
 
     function getPointed(position){
@@ -29,7 +26,7 @@ QtObject {
     function createParticleObjects(startX, startY, endX, endY, charge, nextplayer) {
         var particle = Qt.createComponent("Particle.qml");
 
-        var sprite2 = particle.createObject(scene, {"x": startX, "y": startY, "endX":endX, "endY":endY, "charge":charge, "nextplayer":nextplayer});
+        var sprite2 = particle.createObject(scene, {"x": startX-15, "y": startY-15, "endX":endX+15, "endY":endY+15, "charge":charge, "nextplayer":nextplayer});
 
         if (sprite2 == null) {
             // Error Handling
