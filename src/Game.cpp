@@ -80,10 +80,8 @@ int main(int argc, char *argv[])
      * When particle sent Publish Particle and its charge
      * When particle reach destination Update property Score
      * Subscribe to particles and viruses (SIGNAL)
+     *
      */
-
-
-
     //QQmlEngine engine;
     //engine.addImportPath("qrc:///");
     return SailfishApp::main(argc, argv);

@@ -23,6 +23,24 @@ QtObject {
         return pointedEntity
     }
 
+    function collision(position){
+        var flag = 0
+        entities.forEach(function(entity){
+            if (position.x >= entity.x-20 && position.x <= entity.x+120 && position.y >= entity.y-20 && position.y <= entity.y+120) {
+                //entity.contains(mapToItem(entity, position.x, position.y))){
+                flag = 1
+            }
+        }
+        )
+        if (flag === 1){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+
 
     function createParticleObjects(startX, startY, endX, endY, charge, nextplayer) {
         var particle = Qt.createComponent("Particle.qml");
