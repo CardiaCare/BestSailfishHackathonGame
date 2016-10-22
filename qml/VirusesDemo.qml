@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Item {
     id: item
-    width: 640
-    height: 480
+    width: parent.width
+    height: parent.height
 
     EntityManager {
         id: entityManager

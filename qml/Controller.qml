@@ -16,8 +16,9 @@ Canvas {
 
     onPaint: {
         var ctx = getContext("2d")
-        ctx.fillRect(0, 0, width, height);
+
         ctx.clearRect(0, 0, width, height)
+        ctx.fillRect(0, 0, width, height)
         if (status > 0) {
             ctx.strokeStyle = "white"
             context.beginPath()
@@ -57,7 +58,7 @@ Canvas {
 
                 var startEntity = entityManager.getPointed(startPosition)
                 var endEntity = entityManager.getPointed(endPosition)
-                console.log(startEntity.idinsib+ " " +endEntity.idinsib)
+
                 if (startEntity.idinsib !== endEntity.idinsib){
                     var charge = entityManager.changeScore(startPosition,endPosition)
                     entityManager.createParticleObjects(startEntity.x+80, startEntity.y+80, endEntity.x, endEntity.y,charge, startEntity.player)

@@ -34,11 +34,14 @@ import "pages"
 
 ApplicationWindow
 {
+    id: applicationWindow
     initialPage: Component { FirstPage { } }
+
+
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: Orientation.All
     _defaultPageOrientations: Orientation.All
-    onWindowChanged: window.flags += Qt.WindowOverrideSystemGestures
+    //    onWindowChanged: window.flags += Qt.WindowOverrideSystemGestures
 }
 
 

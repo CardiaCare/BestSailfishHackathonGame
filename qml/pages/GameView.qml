@@ -37,17 +37,18 @@ import "../"
 Page {
     id: page
 
+//    VirusesDemo {
+//        anchors.centerIn: parent
+//    }
 
-    VirusesDemo {
-        anchors.centerIn: parent
+    onStatusChanged: {
+        console.log(status)
+        if (status === PageStatus.Active){
+            console.log("active")
+            applicationWindow.__quickWindow.flags |= Qt.WindowOverrideSystemGestures
+        } else
+            applicationWindow.__quickWindow.flags &= !Qt.WindowOverrideSystemGestures
     }
-
-    // По окончании создания окна инициализируем состояние игрового поля
-    Component.onCompleted: {
-        //Logic.newGameState(gameArea)
-    }
-
-
 }
 
 
