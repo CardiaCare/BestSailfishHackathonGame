@@ -3,19 +3,21 @@ import QtQuick 2.0
 QtObject {
     property var scene
     property var entities: []
+    property int idinsib: 0
 
-    function generate() {
-        var component = Qt.createComponent("Entity.qml")
-        entities.push(component.createObject(scene, {"x": 100, "y": 100, "z": 0, "player": 1, "score": 10}));
-        entities.push(component.createObject(scene, {"x": 300, "y": 250, "z": 0, "player": 2, "score": 2}));
-        entities.push(component.createObject(scene, {"x": 250, "y": 180, "z": 0, "player": 1, "score": 14}));
-        entities.push(component.createObject(scene, {"x": 400, "y": 400, "z": 0, "player": 2, "score": 5}));
-    }
+    function generate(PosX,PosY,Player,Score) {
+        idinsib +=1
+           var component = Qt.createComponent("Entity.qml")
+           entities.push(component.createObject(scene, {"idinsib":idinsib,"x": PosX, "y": PosY, "z": 0, "player": Player, "score": Score}));
+           //entities.push(component.createObject(scene, {"x": PosX, "y": 250, "z": 0, "player": 2, "score": 2}));
+           //entities.push(component.createObject(scene, {"x": PosX, "y": 180, "z": 0, "player": 1, "score": 14}));
+           //entities.push(component.createObject(scene, {"x": 400, "y": 400, "z": 0, "player": 2, "score": 5}));
+       }
 
     function getPointed(position){
         var pointedEntity = null
         entities.forEach(function(entity){
-            if (position.x >= entity.x && position.x <= entity.x+50 && position.y >= entity.y && position.y <= entity.y+50) {
+            if (position.x >= entity.x && position.x <= entity.x+80 && position.y >= entity.y && position.y <= entity.y+80) {
                     //entity.contains(mapToItem(entity, position.x, position.y))){
                 pointedEntity = entity
             }
@@ -49,24 +51,26 @@ QtObject {
     }
 
     function addCharge(finX, finY, charge, nextplayer){
-        console.log(nextplayer.toString());
-
-        console.log(Qt.point(finX, finY));
+        //console.log(nextplayer.toString());
+        //console.log(Qt.point(finX, finY));
 
         var finishEntity = getPointed(Qt.point(finX, finY));
 
         if (finishEntity && finishEntity.player){
-            console.log(finishEntity.player.toString())}
+            console.log(finishEntity.player.toString())
 
-        if (nextplayer == finishEntity.player){
-            finishEntity.score += charge;
-        }
-        else if(finishEntity.score < charge){
-            var endScore = charge - finishEntity.score
-            finishEntity.score += charge;
-            finishEntity.player = nextplayer;
-        } else {
-            finishEntity.score -= charge;
+
+            if (nextplayer == finishEntity.player){
+                finishEntity.score += charge;
+            }
+            else if(finishEntity.score < charge){
+                var endScore = charge - finishEntity.score
+                finishEntity.score += charge;
+                finishEntity.player = nextplayer;
+
+            } else {
+                finishEntity.score -= charge;
+            }
         }
     }
 
@@ -74,7 +78,7 @@ QtObject {
     function checkWinner(){
         var firstPlayer = entities[0];
         entities.forEach(function(entity){
-            if (entity.player != firstPlayer.player) {
+            if (entity.player !== firstPlayer.player) {
                return false;
             }
         })

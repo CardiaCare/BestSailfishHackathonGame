@@ -16,8 +16,8 @@ CONFIG += sailfishapp
 CONFIG += object_parallel_to_source
 
 INCLUDEPATH += src/includes \
-            src/includes/expat \
-            src/includes/scew \
+            src/SmartSlog/expat \
+            src/SmartSlog/scew \
             src/SmartSlog
 
 SOURCES += src/Game.cpp       \

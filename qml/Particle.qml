@@ -2,11 +2,11 @@ import QtQuick 2.0
 
 import "virusgame.js" as Logic
 
-Image {
+AnimatedImage {
     id: particleImg
 
-    width: 10
-    height: 10
+    width: 30
+    height: 30
 
     property int startX
     property int startY
@@ -15,7 +15,7 @@ Image {
     property int nextplayer
     property int charge
 
-    source: "Particle.png"
+    source: "particles.gif"
 
     SequentialAnimation{
         id: parAn
@@ -49,7 +49,6 @@ Image {
 
         onRunningChanged:{
             if (!parAn.running){
-
                 entityManager.addCharge(endX, endY, charge, nextplayer);
             }
         }
