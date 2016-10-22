@@ -30,11 +30,15 @@
 
 #ifdef QT_QML_DEBUG
 #include <QtQuick>
+#include <QHostInfo>
+
 #endif
 
 #include <sailfishapp.h>
-#include "ontology/ontology.h"
 
+extern "C"{
+#include "ontology/ontology.h"
+}
 
 int main(int argc, char *argv[])
 {
@@ -49,22 +53,38 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
     sslog_node_t *node;
     sslog_init();
-    int message_count;
-    
-    char** list = ss_discovery_sib(NULL, 10010, &message_count);
-
-    for(int i = 0; i< sizeof(list); i++){
-       printf("%s\n", list[i]);
-    }
-
-    node = sslog_new_node("KP_Player", "X", "78.46.130.194", 10010);
 
     register_ontology();
-    
-    
 
+    foreach (const QHostAddress &address, QNetworkInterface::allAddresses()) {
+        if (address.protocol() == QAbstractSocket::IPv4Protocol && address != QHostAddress(QHostAddress::LocalHost)){
+
+            QString myIp =  address.toString();
+            QByteArray ar = myIp.toLocal8Bit();
+            char *addr = ar.data();
+            qDebug() << addr;
+            // Initialize smart space information.
+            ss_info_t **infos = ss_discovery(addr, 10010);
+            qDebug() << "1";
+            if (infos == NULL) {
+                qDebug() << "No SIBs around KP :(";
+            } else {
+                qDebug() << "2";
+                int infos_index = 0;
+                qDebug() << "3";
+                ss_info_t *info = infos[infos_index];
+                qDebug() << "4";
+                while (info != NULL)
+                {
+                    qDebug() << "SS Info for " << info->space_id << " Address: " << info->address.ip << " Port: " << info->address.port ;
+                    ++infos_index;
+                    info = infos[infos_index];
+                }
+            }
+
+        }
+    }
     //QQmlEngine engine;
     //engine.addImportPath("qrc:///");
     return SailfishApp::main(argc, argv);
 }
-
