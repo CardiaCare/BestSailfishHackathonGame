@@ -34,6 +34,10 @@ AnimatedImage {
 //        transform: Scale { xScale: 3}
 //    }
 
+    onScoreChanged: {
+        scoreText.text =  virus.score.toString()
+    }
+
     Text {
         id: scoreText
         color: "white"
@@ -42,12 +46,13 @@ AnimatedImage {
         font.bold: true
     }
 
-    Timer {
-        interval: 1000
-        onTriggered:{
-            virus.score += 1
-            scoreText.text =  virus.score.toString()
-        }
-        running: true; repeat: true
-    }
+//    Timer {
+//        id: scoreTimer
+//        interval: 1000
+//        onTriggered:{
+//            virus.score += 1
+//            scoreText.text =  virus.score.toString()
+//        }
+//        running: true; repeat: true
+//    }
 }

@@ -42,7 +42,6 @@ Page {
     }
 
     onStatusChanged: {
-        console.log(status);
         if (status === PageStatus.Active)
             applicationWindow.__quickWindow.flags |= Qt.WindowOverridesSystemGestures;
         else

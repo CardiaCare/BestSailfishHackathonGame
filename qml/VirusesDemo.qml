@@ -22,8 +22,8 @@ Item {
                 posY = Math.random() * (maxH - 100)
                 score = Math.random() * 30 + 10
                 player = Math.random() * 2 + 1
-                console.log(player)
-                console.log(entityManager.collision(Qt.point(posX,posY)))
+                //console.log(player)
+                //console.log(entityManager.collision(Qt.point(posX,posY)))
                 if(i === 0) {
                     generate(posX,posY,player,score)
                 }
@@ -81,21 +81,37 @@ Item {
 
     }
 
-//    Text {
-//        id: totalTime
-//        text: qsTr(totalTime.toString())
-//    }
+
+    property int startTime: 20
+
+    Text {
+        id: foo
+        font.pointSize: 12
+        color:"white"
+        function set() {
+            foo.text = startTime
+        }
+    }
 
     Timer {
-        id: totalTimer
-        interval: 30000
-        onTriggered:{
+        id: textTimer
+        interval: 1000
+        repeat: true
+        running: true
+        triggeredOnStart: true
+        onTriggered: {
+            if(startTime > 0){
+            startTime -= 1
+            foo.set()
+                entityManager.addScore()
+            } else {
+                textTimer.running = false
 
-            entityManager.checkWinner()
-            //totalTime.text =  .toString()
+            }
         }
-        running: true; repeat: false
+
     }
+
 
 
 }

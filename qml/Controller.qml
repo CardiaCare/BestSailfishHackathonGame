@@ -22,7 +22,7 @@ Canvas {
         if (status > 0) {
             ctx.strokeStyle = "white"
             context.beginPath()
-            context.arc(startPosition.x, startPosition.y, startRadius, 0, 3 * Math.PI, false);
+            context.arc(startPosition.x, startPosition.y, startRadius, 0, 4 * Math.PI, false);
             context.lineWidth = 3;
             context.stroke()
             ctx.strokeStyle = "white"
@@ -35,7 +35,7 @@ Canvas {
         if (status > 1) {
             ctx.strokeStyle = "white"
             context.beginPath()
-            context.arc(endPosition.x, endPosition.y, endRadius, 0, 3 * Math.PI, false);
+            context.arc(endPosition.x, endPosition.y, endRadius, 0, 4 * Math.PI, false);
             context.lineWidth = 3;
             context.stroke()
         }

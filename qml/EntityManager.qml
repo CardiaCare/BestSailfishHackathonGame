@@ -7,7 +7,7 @@ QtObject {
 
     function generate(PosX,PosY,Player,Score) {
         idinsib +=1
-        console.log("idinsib " + idinsib)
+        //console.log("idinsib " + idinsib)
            var component = Qt.createComponent("Entity.qml")
            entities.push(component.createObject(scene, {"idinsib":idinsib,"x": PosX, "y": PosY, "z": 0, "player": Player, "score": Score}));
        }
@@ -22,6 +22,18 @@ QtObject {
         })
         return pointedEntity
     }
+
+
+
+    function addScore(){
+        entities.forEach(function(entity){
+            entity.score += 1;
+        })
+    }
+
+
+
+
 
     function collision(position){
         var flag = 0
@@ -49,7 +61,7 @@ QtObject {
 
         if (sprite2 == null) {
             // Error Handling
-            console.log("Error creating object");
+            //console.log("Error creating object");
         }
 
     }
@@ -73,7 +85,7 @@ QtObject {
         var finishEntity = getPointed(Qt.point(finX, finY));
 
         if (finishEntity && finishEntity.player){
-            console.log(finishEntity.player.toString())
+            //console.log(finishEntity.player.toString())
 
 
             if (nextplayer == finishEntity.player){
