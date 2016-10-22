@@ -82,6 +82,35 @@ int main(int argc, char *argv[])
                 }
             }
 
+    foreach (const QHostAddress &address, QNetworkInterface::allAddresses()) {
+        if (address.protocol() == QAbstractSocket::IPv4Protocol && address != QHostAddress(QHostAddress::LocalHost)){
+
+            QString myIp =  address.toString();
+            QByteArray ar = myIp.toLocal8Bit();
+            char *addr = ar.data();
+            qDebug() << addr;
+            // Initialize smart space information.
+            ss_info_t **infos = ss_discovery(addr, 10010);
+            qDebug() << "1";
+            if (infos == NULL) {
+                qDebug() << "No SIBs around KP :(";
+            } else {
+                qDebug() << "2";
+                int infos_index = 0;
+                qDebug() << "3";
+                ss_info_t *info = infos[infos_index];
+                qDebug() << "4";
+                while (info != NULL)
+                {
+                    qDebug() << "SS Info for " << info->space_id << " Address: " << info->address.ip << " Port: " << info->address.port ;
+                    ++infos_index;
+                    info = infos[infos_index];
+                }
+            }
+
+        }
+    }
+
         }
     }
     //QQmlEngine engine;
