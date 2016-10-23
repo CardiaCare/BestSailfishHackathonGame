@@ -110,13 +110,13 @@ Item {
                 if (winner){
                     console.log("true");
 
-                    var dialog = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),
-                                                {"name": "Winner"})
-                    dialog.accepted.connect(function() {
-
-                    })
+                    var dialog = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Winner"})
+                    dialog.accepted.connect(function() {})
                 }else{
                     console.log("false");
+
+                    var dialog = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Game ower"})
+                    dialog.accepted.connect(function() {})
                 }
             }
         }
