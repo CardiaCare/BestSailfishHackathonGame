@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Particle.qml</file>
+        <file>qml/Entity.qml</file>
+        <file>qml/virusgame.js</file>
+        <file>qml/Game.qml</file>
+        <file>qml/Controller.qml</file>
+        <file>qml/particles.gif</file>
+        <file>qml/EntityManager.qml</file>
+        <file>qml/VirusesDemo.qml</file>
+        <file>qml/Particle.png</file>
+        <file>qml/red.gif</file>
+        <file>qml/Virus.png</file>
+        <file>qml/blue.png</file>
+        <file>qml/green.png</file>
+        <file>qml/red.png</file>
+        <file>qml/pages/GameView.qml</file>
+        <file>qml/pages/FirstPage.qml</file>
+        <file>qml/blue.gif</file>
+        <file>qml/green.gif</file>
+    </qresource>
+</RCC>

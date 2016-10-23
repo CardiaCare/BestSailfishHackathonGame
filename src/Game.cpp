@@ -28,16 +28,19 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifdef QT_QML_DEBUG
 #include <QtQuick>
 #include <QHostInfo>
 
-#endif
-
 #include <sailfishapp.h>
+#include "Game.hpp"
 
 extern "C"{
 #include "ontology/ontology.h"
+}
+
+void MyClass::cppSlot(const QString &msg)
+{
+   qDebug() << "Called the C++ slot with message:" << msg;
 }
 
 int main(int argc, char *argv[])
@@ -51,7 +54,7 @@ int main(int argc, char *argv[])
     //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
     //
     // To display the view, call "show()" (will show fullscreen on device).
-
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     sslog_node_t *node;
 
     node = sslog_new_node("PlayerKP", "X", "78.46.130.194", 10010);
@@ -61,15 +64,21 @@ int main(int argc, char *argv[])
 
     register_ontology();
 
-//    sslog_individual_t *player = sslog_new_individual(CLASS_GAMER);
 
-//    sslog_node_insert_individual(node, player);
+    
+    // getOpponentEntities
+    // Subscibe to changes
 
-//    sslog_subscription_t *virus_subscription = sslog_new_subscription(node, true);
-//    sslog_sbcr_add_class(virus_subscription, CLASS_VIRUS);
 
-//    sslog_subsction_t *particles_subscription = sslog_new_subscription(node, true);
-//    sslog_sbcr_add_class(particles_subscription, CLASS_PARTICLE);
+    //    sslog_individual_t *player = sslog_new_individual(CLASS_GAMER);
+
+    //    sslog_node_insert_individual(node, player);
+
+    //    sslog_subscription_t *virus_subscription = sslog_new_subscription(node, true);
+    //    sslog_sbcr_add_class(virus_subscription, CLASS_VIRUS);
+
+    //    sslog_subsction_t *particles_subscription = sslog_new_subscription(node, true);
+    //    sslog_sbcr_add_class(particles_subscription, CLASS_PARTICLE);
 
 
 
@@ -83,7 +92,25 @@ int main(int argc, char *argv[])
      * Subscribe to particles and viruses (SIGNAL)
      *
      */
-    //QQmlEngine engine;
-    //engine.addImportPath("qrc:///");
-    return SailfishApp::main(argc, argv);
+
+   QScopedPointer<QQmlComponent> component(SailfishApp::createView());
+   QObject *item = view.rootObject();
+
+   MyClass myClass;
+   QObject::connect(item, SIGNAL(qmlSignal(QString)),
+                    &myClass, SLOT(cppSlot(QString)));
+
+
+    QScopedPointer<QQuickView> v(SailfishApp::createView());
+    v->setSource(QUrl("qrc:///qml/Game.qml"));
+    v->show();
+    return app->exec();
+}
+
+void getOpponentEntities()
+{
+
+
+
+
 }

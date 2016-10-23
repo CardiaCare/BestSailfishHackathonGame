@@ -28,6 +28,8 @@ SOURCES += src/Game.cpp       \
         $$system(ls src/SmartSlog/*.c)      \
         $$system(ls src/ontology/*.c)
 
+HEADERS += src/Game.hpp
+
 OTHER_FILES += qml/Game.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
@@ -65,3 +67,6 @@ DISTFILES += \
 QMAKE_CFLAGS = -std=c99 -DMTENABLE -DHAVE_EXPAT_CONFIG_H -DHAVE_MEMMOVE
 
 DEFINES += _GNU_SOURCE
+
+RESOURCES += \
+    resource.qrc
