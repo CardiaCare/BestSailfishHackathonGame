@@ -105,6 +105,8 @@ int main(int argc, char *argv[])
     v->setSource(QUrl("qrc:///qml/Game.qml"));
     v->show();
     return app->exec();
+
+ //   return SailfishApp::main(argc, argv);
 }
 
 void getOpponentEntities()
