@@ -93,8 +93,8 @@ int main(int argc, char *argv[])
      *
      */
 
-   QScopedPointer<QQmlComponent> component(SailfishApp::createView());
-   QObject *item = view.rootObject();
+   QScopedPointer<QQuickView> view(SailfishApp::createView());
+   QObject *item = view->rootObject();
 
    MyClass myClass;
    QObject::connect(item, SIGNAL(qmlSignal(QString)),
