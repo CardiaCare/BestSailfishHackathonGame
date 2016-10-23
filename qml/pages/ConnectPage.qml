@@ -88,10 +88,9 @@ Page {
                 x: column.width / 2
                 y: column.height / 2
                 text: qsTr("Start Game")
-                color: "black"
                 height: 200
                 width: 500
-                onClicked: pageStack.push(Qt.resolvedUrl("GameView.qml"))
+                onClicked: pageStack.replace(Qt.resolvedUrl("GameView.qml"))
             }
         }
     }

@@ -19,5 +19,12 @@
         <file>qml/blue.gif</file>
         <file>qml/green.gif</file>
         <file>qml/WinnerDialog.qml</file>
+        <file>qml/Background1.jpg</file>
+        <file>qml/particle.png</file>
+        <file>qml/Virus-Micrograph-e1434121727974.jpg</file>
+        <file>qml/pages/ConnectMenu.qml</file>
+        <file>qml/pages/ConnectPage.qml</file>
+        <file>qml/cover/CoverPage.qml</file>
+        <file>qml/pages/Background1.jpg</file>
     </qresource>
 </RCC>

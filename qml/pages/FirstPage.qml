@@ -84,7 +84,7 @@ Page {
                 text: qsTr("Start")
                 height: 200
                 width: 500
-                onClicked: pageStack.replace(Qt.resolvedUrl("ConnectPage.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("ConnectPage.qml"))
 
             }
         }
