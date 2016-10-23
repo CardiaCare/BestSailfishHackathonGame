@@ -85,11 +85,11 @@ Item {
     property int startTime: 20
 
     Text {
-        id: foo
+        id: totalTime
         font.pointSize: 12
         color:"white"
         function set() {
-            foo.text = startTime
+            totalTime.text = startTime
         }
     }
 
@@ -101,17 +101,25 @@ Item {
         triggeredOnStart: true
         onTriggered: {
             if(startTime > 0){
-            startTime -= 1
-            foo.set()
+                startTime -= 1
+                totalTime.set()
                 entityManager.addScore()
             } else {
                 textTimer.running = false
+                var winner = entityManager.checkWinner()
+                if (winner){
+                    console.log("true");
 
+                    var dialog = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),
+                                                {"name": "Winner"})
+                    dialog.accepted.connect(function() {
+
+                    })
+                }else{
+                    console.log("false");
+                }
             }
         }
 
     }
-
-
-
 }

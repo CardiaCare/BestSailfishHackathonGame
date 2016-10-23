@@ -15,27 +15,21 @@ AnimatedImage {
              "red.gif"
     }
 
+    property int score: 0
+    property int idinsib: 0
 
-    property int score:0
-    property int idinsib
-
-//    onScoreChanged: {
-//        if (score >= 50)
-//            scale = 1.4
-//        if (score <= 10)
-//            scale = 0.6
-//        if(score >10 && score < 50)
-//            scale = 1
-//    }
 
     NumberAnimation { target: virus; property: "scale"; to: scale; duration: 1000 }
-//    states: State {
-//        name: "rotated"
-//        transform: Scale { xScale: 3}
-//    }
+
 
     onScoreChanged: {
         scoreText.text =  virus.score.toString()
+        //        if (score >= 50)
+        //            scale = 1.4
+        //        if (score <= 10)
+        //            scale = 0.6
+        //        if(score >10 && score < 50)
+        //            scale = 1
     }
 
     Text {
@@ -46,13 +40,4 @@ AnimatedImage {
         font.bold: true
     }
 
-//    Timer {
-//        id: scoreTimer
-//        interval: 1000
-//        onTriggered:{
-//            virus.score += 1
-//            scoreText.text =  virus.score.toString()
-//        }
-//        running: true; repeat: true
-//    }
 }
