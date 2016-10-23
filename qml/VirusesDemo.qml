@@ -7,6 +7,9 @@ Item {
     id: item
     width: parent.width
     height: parent.height
+    Button{
+        onClicked:  pageStack.replace(Qt.resolvedUrl("./pages/FirstPage.qml"), {}, PageStackAction.Animated);
+    }
 
     EntityManager {
         id: entityManager
