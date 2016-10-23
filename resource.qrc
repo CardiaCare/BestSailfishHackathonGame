@@ -18,5 +18,6 @@
         <file>qml/pages/FirstPage.qml</file>
         <file>qml/blue.gif</file>
         <file>qml/green.gif</file>
+        <file>qml/WinnerDialog.qml</file>
     </qresource>
 </RCC>

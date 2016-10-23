@@ -43,7 +43,10 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Start game")
-                onClicked: pageStack.push(Qt.resolvedUrl("GameView.qml"))
+                onClicked: {
+                    pageStack.replace(Qt.resolvedUrl("GameView.qml"))
+                    console.log("page replaced");
+                }
             }
         }
 
@@ -69,7 +72,10 @@ Page {
             Button{
 
                 text: qsTr("Start game")
-                onClicked: pageStack.push(Qt.resolvedUrl("GameView.qml"))
+                onClicked: {
+                    pageStack.replace(Qt.resolvedUrl("GameView.qml"))
+                    console.log("page replaced");
+                }
             }
         }
     }

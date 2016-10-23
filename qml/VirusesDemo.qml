@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import Sailfish.Silica 1.0
 
 Item {
     id: item
@@ -107,16 +108,14 @@ Item {
             } else {
                 textTimer.running = false
                 var winner = entityManager.checkWinner()
+                pageStack.replace(Qt.resolvedUrl("./pages/FirstPage.qml"), {}, PageStackAction.Immediate);
                 if (winner){
                     console.log("true");
-
-                    var dialog = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Winner"})
-                    dialog.accepted.connect(function() {})
+                    pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Winner"})
                 }else{
                     console.log("false");
+                    pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Game ower"})
 
-                    var dialog2 = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Game ower"})
-                    dialog2.accepted.connect(function() {})
                 }
             }
         }
