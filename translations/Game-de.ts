@@ -2,24 +2,54 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>ConnectMenu</name>
+    <message>
+        <source>Connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start gameeee</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ConnectPage</name>
+    <message>
+        <source>Input host IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Input IP Here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source></source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
-        <translation>Mein Cover</translation>
+        <source>VirusGame</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
-        <source>UI Template</source>
-        <translation>UI-Vorlage</translation>
+        <source>Virus Game</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hello Sailors</source>
-        <translation>Hallo Matrosen</translation>
+        <source></source>
+        <translation></translation>
     </message>
     <message>
-        <source>Start game</source>
+        <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

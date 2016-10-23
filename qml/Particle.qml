@@ -50,6 +50,7 @@ AnimatedImage {
         onRunningChanged:{
             if (!parAn.running){
                 entityManager.addCharge(endX, endY, charge, nextplayer);
+                entityManager.checkWinner()
             }
         }
     }
