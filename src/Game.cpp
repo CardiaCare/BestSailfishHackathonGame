@@ -32,15 +32,19 @@
 #include <QHostInfo>
 
 #include <sailfishapp.h>
-#include "Game.hpp"
+#include "sib.h"
 
 extern "C"{
 #include "ontology/ontology.h"
 }
 
-void MyClass::cppSlot(const QString &msg)
+static QObject *sib_singleton_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
-   qDebug() << "Called the C++ slot with message:" << msg;
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    SIB *sib = new SIB();
+    return sib;
 }
 
 int main(int argc, char *argv[])
@@ -64,41 +68,7 @@ int main(int argc, char *argv[])
 
     register_ontology();
 
-
-    
-    // getOpponentEntities
-    // Subscibe to changes
-
-
-    //    sslog_individual_t *player = sslog_new_individual(CLASS_GAMER);
-
-    //    sslog_node_insert_individual(node, player);
-
-    //    sslog_subscription_t *virus_subscription = sslog_new_subscription(node, true);
-    //    sslog_sbcr_add_class(virus_subscription, CLASS_VIRUS);
-
-    //    sslog_subsction_t *particles_subscription = sslog_new_subscription(node, true);
-    //    sslog_sbcr_add_class(particles_subscription, CLASS_PARTICLE);
-
-
-
-
-
-    /*
-     * Publish Player
-     * Publish its viruses
-     * When particle sent Publish Particle and its charge
-     * When particle reach destination Update property Score
-     * Subscribe to particles and viruses (SIGNAL)
-     *
-     */
-
-   QScopedPointer<QQuickView> view(SailfishApp::createView());
-   QObject *item = view->rootObject();
-
-   MyClass myClass;
-   QObject::connect(item, SIGNAL(qmlSignal(QString)),
-                    &myClass, SLOT(cppSlot(QString)));
+    qmlRegisterSingletonType<SIB>("com.hackathon.petrsu", 1, 0, "SIB", sib_singleton_provider);
 
 
     QScopedPointer<QQuickView> v(SailfishApp::createView());
