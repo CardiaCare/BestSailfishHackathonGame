@@ -65,7 +65,10 @@ DISTFILES += \
     qml/EntityManager.qml \
     qml/VirusesDemo.qml \
     qml/Particle.qml \
-    qml/WinnerDialog.qml
+    qml/WinnerDialog.qml \
+    qml/pages/ConnectPage.qml \
+    qml/pages/Background1.jpg \
+    qml/pages/ConnectMenu.qml
 
 QMAKE_CFLAGS = -std=c99 -DMTENABLE -DHAVE_EXPAT_CONFIG_H -DHAVE_MEMMOVE
 

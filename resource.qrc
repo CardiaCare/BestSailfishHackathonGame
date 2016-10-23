@@ -19,5 +19,9 @@
         <file>qml/blue.gif</file>
         <file>qml/green.gif</file>
         <file>qml/WinnerDialog.qml</file>
+        <file>qml/pages/Background1.jpg</file>
+        <file>qml/pages/ConnectMenu.qml</file>
+        <file>qml/pages/ConnectPage.qml</file>
+        <file>qml/cover/CoverPage.qml</file>
     </qresource>
 </RCC>

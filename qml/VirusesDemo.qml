@@ -8,6 +8,10 @@ Item {
     width: parent.width
     height: parent.height
     Button{
+        width: 150
+        height: 50
+        y: parent.height - 60
+        text: "back"
         onClicked:  pageStack.replace(Qt.resolvedUrl("./pages/FirstPage.qml"), {}, PageStackAction.Animated);
     }
 
@@ -25,7 +29,7 @@ Item {
             var playerCount = [0,0,0]
             for(i = 0; i < count; i++) {
                 posX = Math.random() * (maxW - 100)
-                posY = Math.random() * (maxH - 100)
+                posY = Math.random() * (maxH - 150)
                 score = Math.random() * 30 + 10
                 player = Math.random() * 2 + 1
                 //console.log(player)
@@ -92,8 +96,10 @@ Item {
 
     Text {
         id: totalTime
-        font.pointSize: 12
+        font.pointSize: 40
         color:"white"
+        x: parent.width - 60
+        y: 10
         function set() {
             totalTime.text = startTime
         }
@@ -103,6 +109,7 @@ Item {
         id: textTimer
         interval: 1000
         repeat: true
+
         running: true
         triggeredOnStart: true
         onTriggered: {
@@ -119,7 +126,7 @@ Item {
                     pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Winner"})
                 }else{
                     console.log("false");
-                    pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Game ower"})
+                    pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Game Over"})
 
                 }
             }

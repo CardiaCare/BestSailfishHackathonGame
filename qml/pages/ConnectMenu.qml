@@ -80,7 +80,7 @@ Page {
                 y: column.height / 2
                 text: qsTr("Start gameeee")
 
-                onClicked: pageStack.push(Qt.resolvedUrl("GameView.qml"))
+                onClicked: pageStack.replace(Qt.resolvedUrl("GameView.qml"))
             }
         }
     }
