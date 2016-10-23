@@ -34,8 +34,9 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
+
     Image {
-        id: back
+        id: back1
         z:-1
         source: "Background1.jpg"
     }
@@ -65,25 +66,23 @@ Page {
             height: page.height
             spacing: Theme.paddingLarge
             PageHeader {
-                title: qsTr("")
+                title: qsTr("Connection")
             }
-            Label {
+            /*Label {
                 x: Theme.paddingLarge
-                text: qsTr("Virus Game")
-                color: "white"
-                font.pixelSize: Theme.fontSizeExtraLarge + 80
-            }
+                text: qsTr("Hello Sailors")
+                color: Theme.secondaryHighlightColor
+                font.pixelSize: Theme.fontSizeExtraLarge
+            }*/
             Button{
                 anchors.centerIn: parent
                 x: column.width / 2
                 y: column.height / 2
-                text: qsTr("Start")
-                height: 200
-                width: 500
-                onClicked: pageStack.push(Qt.resolvedUrl("ConnectPage.qml"))
+                text: qsTr("Start gameeee")
+
+                onClicked: pageStack.push(Qt.resolvedUrl("GameView.qml"))
             }
         }
     }
 }
-
 

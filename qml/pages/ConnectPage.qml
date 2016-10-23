@@ -64,26 +64,35 @@ Page {
             width: page.width
             height: page.height
             spacing: Theme.paddingLarge
+
             PageHeader {
                 title: qsTr("")
             }
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("Virus Game")
+                text: qsTr("Input host IP")
                 color: "white"
-                font.pixelSize: Theme.fontSizeExtraLarge + 80
+                font.pixelSize: Theme.fontSizeExtraLarge + 8
             }
+            TextField{
+                id: hostIP
+                x: column.width / 2 - 280
+                y: column.height / 2 - 250
+                color: "white"
+                font.pixelSize: Theme.fontSizeExtraLarge + 30
+                text: qsTr("Input IP Here")
+            }
+
             Button{
                 anchors.centerIn: parent
                 x: column.width / 2
                 y: column.height / 2
-                text: qsTr("Start")
+                text: qsTr("Start Game")
+                color: "black"
                 height: 200
                 width: 500
-                onClicked: pageStack.push(Qt.resolvedUrl("ConnectPage.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("GameView.qml"))
             }
         }
     }
 }
-
-
