@@ -1,6 +1,6 @@
 
 //Set path to SmartSlog KP Library
-#include <smartslog.h>
+#include <smartslog/generic.h>
 
 #ifndef _GENERATED_ONTOLOGY
 #define	_GENERATED_ONTOLOGY
@@ -20,7 +20,9 @@ extern "C" {
 #define INCLUDE_PROPERTY_SEND 1
 #define INCLUDE_PROPERTY_HAS 1
 #define INCLUDE_PROPERTY_TO 1
+#define INCLUDE_PROPERTY_Y 1
 #define INCLUDE_PROPERTY_COLOR 1
+#define INCLUDE_PROPERTY_X 1
 #define INCLUDE_CLASS_THING 1
 #define INCLUDE_CLASS_PARTICLE 1
 #define INCLUDE_CLASS_NOTHING 1
@@ -36,7 +38,9 @@ extern "C" {
 #define INCLUDE_PROPERTY_SEND 0
 #define INCLUDE_PROPERTY_HAS 0
 #define INCLUDE_PROPERTY_TO 0
+#define INCLUDE_PROPERTY_Y 0
 #define INCLUDE_PROPERTY_COLOR 0
+#define INCLUDE_PROPERTY_X 0
 #define INCLUDE_CLASS_THING 0
 #define INCLUDE_CLASS_PARTICLE 0
 #define INCLUDE_CLASS_NOTHING 0
@@ -82,8 +86,14 @@ extern sslog_property_t *PROPERTY_HAS;
 #if INCLUDE_PROPERTY_TO
 extern sslog_property_t *PROPERTY_TO;
 #endif
+#if INCLUDE_PROPERTY_Y
+extern sslog_property_t *PROPERTY_Y;
+#endif
 #if INCLUDE_PROPERTY_COLOR
 extern sslog_property_t *PROPERTY_COLOR;
+#endif
+#if INCLUDE_PROPERTY_X
+extern sslog_property_t *PROPERTY_X;
 #endif
 
 

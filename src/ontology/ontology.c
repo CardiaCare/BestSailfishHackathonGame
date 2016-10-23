@@ -37,8 +37,14 @@ sslog_property_t *PROPERTY_HAS;
 #if INCLUDE_PROPERTY_TO
 sslog_property_t *PROPERTY_TO;
 #endif
+#if INCLUDE_PROPERTY_Y
+sslog_property_t *PROPERTY_Y;
+#endif
 #if INCLUDE_PROPERTY_COLOR
 sslog_property_t *PROPERTY_COLOR;
+#endif
+#if INCLUDE_PROPERTY_X
+sslog_property_t *PROPERTY_X;
 #endif
 
 
@@ -68,8 +74,14 @@ PROPERTY_HAS =  sslog_new_property("http://oss.fruct.org/virusgame#has", SSLOG_P
 #if INCLUDE_PROPERTY_TO
 PROPERTY_TO =  sslog_new_property("http://oss.fruct.org/virusgame#to", SSLOG_PROPERTY_TYPE_OBJECT);
 #endif
+#if INCLUDE_PROPERTY_Y
+PROPERTY_Y =  sslog_new_property("http://oss.fruct.org/virusgame#y", SSLOG_PROPERTY_TYPE_DATA);
+#endif
 #if INCLUDE_PROPERTY_COLOR
 PROPERTY_COLOR =  sslog_new_property("http://oss.fruct.org/virusgame#color", SSLOG_PROPERTY_TYPE_DATA);
+#endif
+#if INCLUDE_PROPERTY_X
+PROPERTY_X =  sslog_new_property("http://oss.fruct.org/virusgame#x", SSLOG_PROPERTY_TYPE_DATA);
 #endif
 
 
