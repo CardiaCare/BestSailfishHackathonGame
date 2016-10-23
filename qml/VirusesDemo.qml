@@ -1,4 +1,6 @@
 import QtQuick 2.0
+import com.hackathon.petrsu 1.0
+
 
 Item {
     id: item

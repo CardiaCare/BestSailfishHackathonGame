@@ -26,9 +26,11 @@ SOURCES += src/Game.cpp       \
         $$system(ls src/SmartSlog/scew/*.c) \
         $$system(ls src/SmartSlog/ckpi/*.c) \
         $$system(ls src/SmartSlog/*.c)      \
-        $$system(ls src/ontology/*.c)
+        $$system(ls src/ontology/*.c) \
+    src/sib.cpp
 
-HEADERS += src/Game.hpp
+HEADERS += \
+    src/sib.h
 
 OTHER_FILES += qml/Game.qml \
     qml/cover/CoverPage.qml \
