@@ -86,7 +86,6 @@ Page {
                 height: 200
                 width: 500
                 onClicked: pageStack.replace(Qt.resolvedUrl("ConnectPage.qml"))
-
             }
         }
     }
