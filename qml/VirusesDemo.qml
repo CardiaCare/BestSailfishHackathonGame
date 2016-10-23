@@ -115,8 +115,8 @@ Item {
                 }else{
                     console.log("false");
 
-                    var dialog = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Game ower"})
-                    dialog.accepted.connect(function() {})
+                    var dialog2 = pageStack.push(Qt.resolvedUrl("WinnerDialog.qml"),{"win": "Game ower"})
+                    dialog2.accepted.connect(function() {})
                 }
             }
         }

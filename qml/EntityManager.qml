@@ -104,8 +104,6 @@ QtObject {
         var firstPlayer = entities[0];
         for(var i = 1; i < entities.length; i++){
             if (entities[i].player !== firstPlayer.player) {
-               console.log("entity.player "+entities[i].player)
-               console.log("firstPlayer.player "+firstPlayer.player)
                return false
             }
         }
